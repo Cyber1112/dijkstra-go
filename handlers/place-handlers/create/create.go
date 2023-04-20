@@ -11,18 +11,18 @@ type Handler struct {
 	service createPlace.Service
 }
 
-func NewHandlerCreateStudent(service createPlace.Service) *Handler {
+func NewHandlerCreatePlace(service createPlace.Service) *Handler {
 	return &Handler{service: service}
 }
 
-func (h *Handler) CreateStudentHandler(ctx *gin.Context) {
+func (h *Handler) CreatePlaceHandler(ctx *gin.Context) {
 
 	var input createPlace.InputCreatePlace
 	ctx.ShouldBindJSON(&input)
 
-	_, errCreateStudent := h.service.CreatePlaceService(&input)
+	_, errCreatePlace := h.service.CreatePlaceService(&input)
 
-	switch errCreateStudent {
+	switch errCreatePlace {
 
 	case "CREATE_PLACE_CONFLICT_409":
 		util.APIResponse(ctx, "Place name already exist", http.StatusConflict, http.MethodPost, nil)

@@ -21,7 +21,7 @@ func (s *service) CreatePlaceService(input *InputCreatePlace) (*models.Place, st
 		Latitude:  input.Latitude,
 	}
 
-	resultCreateStudent, errCreateStudent := s.repository.CreatePlaceRepository(&place)
+	resultCreatePlace, errCreatePlace := s.repository.CreatePlaceRepository(&place)
 
-	return resultCreateStudent, errCreateStudent
+	return resultCreatePlace, errCreatePlace
 }

@@ -23,9 +23,9 @@ func (r *repository) ResultsPlacesRepository() (*[]models.Place, string) {
 	db := r.db.Model(&places)
 	errorCode := make(chan string, 1)
 
-	resultsStudents := db.Debug().Select("*").Find(&places)
+	resultsPlaces := db.Debug().Select("*").Find(&places)
 
-	if resultsStudents.Error != nil {
+	if resultsPlaces.Error != nil {
 		errorCode <- "RESULTS_PLACES_NOT_FOUND_404"
 		return &places, <-errorCode
 	} else {

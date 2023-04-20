@@ -23,7 +23,7 @@ func (s *service) UpdatePlaceService(input *InputUpdatePlace) (*models.Place, st
 		Latitude:  input.Latitude,
 	}
 
-	resultUpdateStudent, errUpdateStudent := s.repository.UpdatePlaceRepository(&place)
+	resultUpdatePlace, errUpdatePlace := s.repository.UpdatePlaceRepository(&place)
 
-	return resultUpdateStudent, errUpdateStudent
+	return resultUpdatePlace, errUpdatePlace
 }

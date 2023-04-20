@@ -11,20 +11,20 @@ type handler struct {
 	service results.Service
 }
 
-func NewHandlerResultsStudent(service results.Service) *handler {
+func NewHandlerResultsPlace(service results.Service) *handler {
 	return &handler{service: service}
 }
 
-func (h *handler) ResultsStudentHandler(ctx *gin.Context) {
+func (h *handler) ResultsPlaceHandler(ctx *gin.Context) {
 
-	resultsStudent, errResultsStudent := h.service.ResultsPlacesService()
+	resultsPlace, errResultsPlace := h.service.ResultsPlacesService()
 
-	switch errResultsStudent {
+	switch errResultsPlace {
 
 	case "RESULTS_PLACES_NOT_FOUND_404":
 		util.APIResponse(ctx, "Places data does not exists", http.StatusConflict, http.MethodPost, nil)
 
 	default:
-		util.APIResponse(ctx, "Results Places data successfully", http.StatusOK, http.MethodPost, resultsStudent)
+		util.APIResponse(ctx, "Results Places data successfully", http.StatusOK, http.MethodPost, resultsPlace)
 	}
 }

@@ -14,22 +14,22 @@ import (
 func InitPlaceRoutes(db *gorm.DB, route *gin.Engine) {
 
 	/**
-	@description All Handler Student
+	@description All Handler Place
 	*/
 	createPlaceRepository := createPlace.NewRepositoryCreate(db)
 	createPlaceService := createPlace.NewServiceCreate(createPlaceRepository)
-	createPlaceHandler := createHandler.NewHandlerCreateStudent(createPlaceService)
+	createPlaceHandler := createHandler.NewHandlerCreatePlace(createPlaceService)
 
 	resultsPlaceRepository := results.NewRepositoryResults(db)
 	resultsPlaceService := results.NewServiceResults(resultsPlaceRepository)
-	resultsPlaceHandler := resultsHandler.NewHandlerResultsStudent(resultsPlaceService)
+	resultsPlaceHandler := resultsHandler.NewHandlerResultsPlace(resultsPlaceService)
 
 	updatePlaceRepository := updatePlace.NewRepositoryUpdate(db)
 	updatePlaceService := updatePlace.NewServiceUpdate(updatePlaceRepository)
 	updatePlaceHandler := updateHandler.NewHandlerUpdatePlace(updatePlaceService)
 
 	groupRoute := route.Group("/api/v1")
-	groupRoute.POST("/places", createPlaceHandler.CreateStudentHandler)
-	groupRoute.GET("/places", resultsPlaceHandler.ResultsStudentHandler)
+	groupRoute.POST("/places", createPlaceHandler.CreatePlaceHandler)
+	groupRoute.GET("/places", resultsPlaceHandler.ResultsPlaceHandler)
 	groupRoute.PUT("/places/:id", updatePlaceHandler.UpdatePlaceHandler)
 }

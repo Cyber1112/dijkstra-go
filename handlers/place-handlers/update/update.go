@@ -26,9 +26,9 @@ func (h *Handler) UpdatePlaceHandler(ctx *gin.Context) {
 
 	ctx.ShouldBindJSON(&input)
 
-	_, errUpdateStudent := h.service.UpdatePlaceService(&input)
+	_, errUpdatePlace := h.service.UpdatePlaceService(&input)
 
-	switch errUpdateStudent {
+	switch errUpdatePlace {
 
 	case "UPDATE_PLACE_NOT_FOUND_404":
 		util.APIResponse(ctx, "Place's data does not exist or deleted", http.StatusNotFound, http.MethodPost, nil)
