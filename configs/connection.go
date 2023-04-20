@@ -21,9 +21,11 @@ func Connection() *gorm.DB {
 
 	logrus.Info("Connection to Database Successfully")
 
-	err = db.AutoMigrate(
-		&models.Place{},
-	)
+	if err != nil {
+		logrus.Fatal(err.Error())
+	}
+
+	err = db.AutoMigrate(&models.Place{})
 
 	if err != nil {
 		logrus.Fatal(err.Error())

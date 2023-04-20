@@ -16,9 +16,9 @@ func NewServiceCreate(repository Repository) *service {
 
 func (s *service) CreatePlaceService(input *InputCreatePlace) (*models.Place, string) {
 	place := models.Place{
-		Name:      input.Name,
-		Longitude: input.Longitude,
-		Latitude:  input.Latitude,
+		Start:  input.Start,
+		End:    input.End,
+		Weight: input.Weight,
 	}
 
 	resultCreatePlace, errCreatePlace := s.repository.CreatePlaceRepository(&place)

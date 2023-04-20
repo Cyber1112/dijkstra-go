@@ -20,3 +20,10 @@ func (s *service) ResultsPlacesService() (*[]models.Place, string) {
 
 	return results, errResults
 }
+
+func (s *service) DijkstraService(nodeA string) (*[]models.Place, string) {
+
+	results, errResults := s.repository.ResultsPlacesRepository()
+
+	return results, errResults
+}

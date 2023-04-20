@@ -17,10 +17,8 @@ func NewServiceUpdate(repository Repository) *service {
 func (s *service) UpdatePlaceService(input *InputUpdatePlace) (*models.Place, string) {
 
 	place := models.Place{
-		ID:        input.ID,
-		Name:      input.Name,
-		Longitude: input.Longitude,
-		Latitude:  input.Latitude,
+		ID:     input.ID,
+		Weight: input.Weight,
 	}
 
 	resultUpdatePlace, errUpdatePlace := s.repository.UpdatePlaceRepository(&place)

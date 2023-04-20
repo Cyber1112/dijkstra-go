@@ -1,7 +1,7 @@
 package createPlace
 
 type InputCreatePlace struct {
-	Name      string  `json:"name" validate:"required"`
-	Latitude  float32 `json:"latitude" validate:"required"`
-	Longitude float32 `json:"longitude" validate:"required"`
+	Start  string  `json:"start" validate:"required"`
+	End    string  `json:"end" validate:"required"`
+	Weight float32 `json:"weight" validate:"required"`
 }

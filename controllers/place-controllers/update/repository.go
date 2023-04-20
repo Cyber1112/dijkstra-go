@@ -31,9 +31,7 @@ func (r repository) UpdatePlaceRepository(input *models.Place) (*models.Place, s
 		return &place, <-errorCode
 	}
 
-	place.Name = input.Name
-	place.Longitude = input.Longitude
-	place.Latitude = input.Latitude
+	place.Weight = input.Weight
 
 	updatePlace := db.Debug().Where("id = ?", input.ID).Updates(place)
 

@@ -24,16 +24,16 @@ func (r *repository) CreatePlaceRepository(input *models.Place) (*models.Place, 
 	db := r.db.Model(&place)
 	errorCode := make(chan string, 1)
 
-	checkPlaceExist := db.Debug().Select("*").Where("name = ?", input.Name).Find(&place)
+	//checkPlaceExist := db.Debug().Select("*").Where("name = ?", input.Name).Find(&place)
+	//
+	//if checkPlaceExist.RowsAffected > 0 {
+	//	errorCode <- "CREATE_PLACE_CONFLICT_409"
+	//	return &place, <-errorCode
+	//}
 
-	if checkPlaceExist.RowsAffected > 0 {
-		errorCode <- "CREATE_PLACE_CONFLICT_409"
-		return &place, <-errorCode
-	}
-
-	place.Name = input.Name
-	place.Longitude = input.Longitude
-	place.Latitude = input.Latitude
+	place.Start = input.Start
+	place.End = input.End
+	place.Weight = input.Weight
 
 	addNewPlace := db.Debug().Create(&place)
 	db.Commit()
